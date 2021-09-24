@@ -23,8 +23,8 @@ namespace DatabaseFirstLINQ
             //ProblemSix();
             //ProblemSeven();
             //ProblemEight();
-            ProblemNine();
-            //ProblemTen();
+            //ProblemNine();
+            ProblemTen();
             //ProblemEleven();
             //ProblemTwelve();
             //ProblemThirteen();
@@ -93,13 +93,6 @@ namespace DatabaseFirstLINQ
             DateTime checkBefore = new DateTime(2016, 01, 01);
             var olUsers = _context.Users.Where(u => u.RegistrationDate < checkBefore);
             foreach (var oldies in olUsers)
-<<<<<<< HEAD
-                
-=======
-            {
-                Console.WriteLine(oldies.RegistrationDate + "  " + oldies.Email);
-            }
->>>>>>> 298f2fb13b7a59721ae659c6ea5e1902cdc660da
 
             {
                 Console.WriteLine(oldies.RegistrationDate + "  " + oldies.Email);
@@ -147,19 +140,19 @@ private void ProblemSeven()
             // Write a LINQ query that retreives all of the products in the shopping cart of the user who has the email "oda@gmail.com" and returns the sum of all of the products prices.
             // HINT: End of query will be: .Select(sc => sc.Product.Price).Sum();
             // Then print the total of the shopping cart to the console.
-<<<<<<< HEAD
             var sumPrice = _context.ShoppingCarts.Include(s => s.Product).Where(u => u.User.Email == "oda@gmail.com").Select(s => s.Product.Price).Sum();
             Console.WriteLine($"Total Price: {sumPrice}");
-=======
-            
-
->>>>>>> 298f2fb13b7a59721ae659c6ea5e1902cdc660da
         }
         private void ProblemTen()
         {
             // Write a LINQ query that retreives all of the products in the shopping cart of users who have the role of "Employee".
             // Then print the user's email as well as the product's name, price, and quantity to the console.
-            
+            var usersInRole = _context.UserRoles.Where(u => u.Role.RoleName == "Employee").Select(u => u.User.Id);
+            var userShoppingCartProducts = _context.ShoppingCarts.Include(sc => sc.Product).Include(sc => sc.User).Where(sc => usersInRole.Contains(sc.UserId));
+            foreach (var shoppingCart in userShoppingCartProducts)
+            {
+                Console.WriteLine($"Email: {shoppingCart.User.Email}\n Product Name: {shoppingCart.Product.Name} \n {shoppingCart.Product.Price}\n {shoppingCart.Quantity}\n\n");
+            }
         }
         // <><><><><><><><> CUD (Create, Update, Delete) Actions <><><><><><><><><>
 
