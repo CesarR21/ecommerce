@@ -23,7 +23,7 @@ namespace DatabaseFirstLINQ
             //ProblemSix();
             //ProblemSeven();
             //ProblemEight();
-            //ProblemNine();
+            ProblemNine();
             //ProblemTen();
             //ProblemEleven();
             //ProblemTwelve();
@@ -90,19 +90,31 @@ namespace DatabaseFirstLINQ
         {
             // Write a LINQ query that gets all of the users who registered BEFORE 2016
             // Then print each user's email and registration date to the console.
+            DateTime checkBefore = new DateTime(2016, 01, 01);
+            var olUsers = _context.Users.Where(u => u.RegistrationDate < checkBefore);
+            foreach (var oldies in olUsers)
+                
 
+            {
+                Console.WriteLine(oldies.RegistrationDate + "  " + oldies.Email);
+            }
         }
-
         private void ProblemSix()
         {
-            // Write a LINQ query that gets all of the users who registered AFTER 2016 and BEFORE 2018
-            // Then print each user's email and registration date to the console.
 
-        }
+            DateTime checkBefore = new DateTime(2018, 01, 01);
+            DateTime checkAfter = new DateTime(2016, 01, 01);
+        var wantedUsers = _context.Users.Where(u => u.RegistrationDate > checkAfter && u.RegistrationDate < checkBefore);
+            foreach (var wusers in wantedUsers)
+            {
+                Console.WriteLine(wusers.RegistrationDate + "  " + wusers.Email);
+            }
+}
 
-        // <><><><><><><><> R Actions (Read) with Foreign Keys <><><><><><><><><>
 
-        private void ProblemSeven()
+// <><><><><><><><> R Actions (Read) with Foreign Keys <><><><><><><><><>
+
+private void ProblemSeven()
         {
             // Write a LINQ query that retreives all of the users who are assigned to the role of Customer.
             // Then print the users email and role name to the console.
@@ -125,9 +137,9 @@ namespace DatabaseFirstLINQ
             // Write a LINQ query that retreives all of the products in the shopping cart of the user who has the email "oda@gmail.com" and returns the sum of all of the products prices.
             // HINT: End of query will be: .Select(sc => sc.Product.Price).Sum();
             // Then print the total of the shopping cart to the console.
-
+            var sumPrice = _context.ShoppingCarts.Include(s => s.Product).Where(u => u.User.Email == "oda@gmail.com").Select(s => s.Product.Price).Sum();
+            Console.WriteLine($"Total Price: {sumPrice}");
         }
-
         private void ProblemTen()
         {
             // Write a LINQ query that retreives all of the products in the shopping cart of users who have the role of "Employee".
