@@ -19,7 +19,7 @@ namespace DatabaseFirstLINQ
             //ProblemTwo();
             //ProblemThree();
             //ProblemFour();
-            ProblemFive();
+            //ProblemFive();
             //ProblemSix();
             //ProblemSeven();
             //ProblemEight();
@@ -123,7 +123,11 @@ namespace DatabaseFirstLINQ
         {
             // Write a LINQ query that retreives all of the products in the shopping cart of the user who has the email "afton@gmail.com".
             // Then print the product's name, price, and quantity to the console.
-
+            var productCustomer = _context.ShoppingCarts.Include(p => p.Product).Where(u => u.User.Email == "afton@gmail.com");
+            foreach (ShoppingCart proId in productCustomer)
+            {
+                Console.WriteLine($"Product Name: {proId.Product.Name}  Price: {proId.Product.Price} Quantity: {proId.Quantity}");
+            }
         }
 
         private void ProblemNine()
@@ -131,6 +135,7 @@ namespace DatabaseFirstLINQ
             // Write a LINQ query that retreives all of the products in the shopping cart of the user who has the email "oda@gmail.com" and returns the sum of all of the products prices.
             // HINT: End of query will be: .Select(sc => sc.Product.Price).Sum();
             // Then print the total of the shopping cart to the console.
+            
 
         }
 
@@ -138,11 +143,8 @@ namespace DatabaseFirstLINQ
         {
             // Write a LINQ query that retreives all of the products in the shopping cart of users who have the role of "Employee".
             // Then print the user's email as well as the product's name, price, and quantity to the console.
-
+            
         }
-
-
-
         // <><><><><><><><> CUD (Create, Update, Delete) Actions <><><><><><><><><>
 
         // <><> C Actions (Create) <><>
