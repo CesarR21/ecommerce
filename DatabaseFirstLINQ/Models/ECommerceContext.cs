@@ -28,7 +28,7 @@ namespace DatabaseFirstLINQ.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=ECommerce;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=LAPTOP-HJUT8O7B\\MSSQLSERVER01;Database=ECommerce;Trusted_Connection=True;");
             }
         }
 
@@ -70,13 +70,13 @@ namespace DatabaseFirstLINQ.Models
                     .WithMany(p => p.ShoppingCarts)
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ShoppingC__Produ__300424B4");
+                    .HasConstraintName("FK__ShoppingC__Produ__30F848ED");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.ShoppingCarts)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ShoppingC__UserI__2F10007B");
+                    .HasConstraintName("FK__ShoppingC__UserI__300424B4");
             });
 
             modelBuilder.Entity<User>(entity =>
@@ -104,13 +104,13 @@ namespace DatabaseFirstLINQ.Models
                     .WithMany(p => p.UserRoles)
                     .HasForeignKey(d => d.RoleId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__UserRoles__RoleI__29572725");
+                    .HasConstraintName("FK__UserRoles__RoleI__2A4B4B5E");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.UserRoles)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__UserRoles__UserI__286302EC");
+                    .HasConstraintName("FK__UserRoles__UserI__29572725");
             });
 
             OnModelCreatingPartial(modelBuilder);
