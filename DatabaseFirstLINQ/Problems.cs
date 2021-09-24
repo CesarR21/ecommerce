@@ -17,7 +17,7 @@ namespace DatabaseFirstLINQ
         {
             //ProblemOne();
             //ProblemTwo();
-            ProblemThree();
+            //ProblemThree();
             //ProblemFour();
             //ProblemFive();
             //ProblemSix();
@@ -42,17 +42,11 @@ namespace DatabaseFirstLINQ
         {
             // Write a LINQ query that returns the number of users in the Users table.
             // HINT: .ToList().Count
-<<<<<<< HEAD
+
 
             var users = _context.Users;
             var numberofUsers = users.ToList().Count;
             Console.WriteLine(numberofUsers);
-
-=======
-            var users = _context.Users;
-            var C = users.ToList().Count;
-            Console.WriteLine(C);
->>>>>>> 0322997258134b937a0b3c08e298e622f4448cb0
         }
 
         private void ProblemTwo()
@@ -83,7 +77,13 @@ namespace DatabaseFirstLINQ
         {
             // Write a LINQ query that gets each product that contains an "s" in the products name.
             // Then print the name of each product from the above query to the console.
+            string chcheckFor = "s";
+            var nameWithS = _context.Products.Where(p => p.Name.Contains(chcheckFor));
 
+            foreach (var nms in nameWithS)
+            {
+                Console.WriteLine(nms.Name);
+            }
         }
 
         private void ProblemFive()
