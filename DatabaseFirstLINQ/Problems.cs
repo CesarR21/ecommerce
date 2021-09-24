@@ -42,11 +42,17 @@ namespace DatabaseFirstLINQ
         {
             // Write a LINQ query that returns the number of users in the Users table.
             // HINT: .ToList().Count
+<<<<<<< HEAD
 
             var users = _context.Users;
             var numberofUsers = users.ToList().Count;
             Console.WriteLine(numberofUsers);
 
+=======
+            var users = _context.Users;
+            var C = users.ToList().Count;
+            Console.WriteLine(C);
+>>>>>>> 0322997258134b937a0b3c08e298e622f4448cb0
         }
 
         private void ProblemTwo()
@@ -128,6 +134,8 @@ namespace DatabaseFirstLINQ
             // Then print the user's email as well as the product's name, price, and quantity to the console.
 
         }
+
+
 
         // <><><><><><><><> CUD (Create, Update, Delete) Actions <><><><><><><><><>
 
