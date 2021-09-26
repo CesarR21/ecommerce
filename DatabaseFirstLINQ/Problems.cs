@@ -30,8 +30,8 @@ namespace DatabaseFirstLINQ
             //ProblemThirteen();
             //ProblemFourteen();
             //ProblemFifteen();
-            ProblemSixteen();
-            //ProblemSeventeen();
+            //ProblemSixteen();
+            ProblemSeventeen();
             //ProblemEighteen();
             //ProblemNineteen();
             //ProblemTwenty();
@@ -233,8 +233,6 @@ private void ProblemSeven()
             product.Price = 316;
             _context.Products.Update(product);
             _context.SaveChanges();
-
-
         }
 
         private void ProblemSeventeen()
